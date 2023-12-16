@@ -13,6 +13,7 @@ def fuksiarz_scraper(api_url):
     data=response['data'] #each element of data list == match
     for match in data:
         competition=match['category3Name']
+        time_dt=match['eventStart']
         data2=match['eventGames']
         data2=data2[0]
         data2=data2['outcomes']
