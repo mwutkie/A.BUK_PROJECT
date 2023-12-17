@@ -5,12 +5,12 @@ from api_etoto import *
 from api_betclick import *
 from api_forbet import *
 def merge():
-    etoto=api_url='https://api.etoto.pl/rest/market/categories/multi/847/events'
-    totalbet=api_url='https://totalbet.pl/rest/market/categories/multi/7226/events'
-    fuksiarz=api_url='https://fuksiarz.pl/rest/market/categories/multi/236/events'
-    betfan=api_url='https://api-v2.betfan.pl/api/v1/market/categories/264/events?date=&hours='
-    betclick=api_url='https://offer.cdn.begmedia.com/api/pub/v3/competitions/'+'5'+'?application=2048&countrycode=pl&forceCompetitionInfo=true&language=pa&markettypeId=1365&sitecode=plpa'
-    forbet=api_url='https://www.iforbet.pl/rest/market/categories/multi/29994/events?gamesClass=major'
+    etoto=api_url=''
+    totalbet=api_url=''
+    fuksiarz=api_url=''
+    betfan=api_url=''
+    betclick=api_url=''
+    forbet=api_url=''
 
 
     df_list=[etoto_scraper(etoto),fuksiarz_scraper(fuksiarz),totalbet_scraper(totalbet),betfan_scraper(betfan),api_betclick_scraper(betclick),forbet_scraper(forbet)]
