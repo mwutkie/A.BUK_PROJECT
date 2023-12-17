@@ -21,7 +21,7 @@ def totalbet_scraper(api_url):
 
     response=response['data']
     for match in response:
-        datetime_list.append(match['eventStart'])
+        
         
         competition=match['category3Name']
         data2=match['eventGames']
@@ -30,7 +30,7 @@ def totalbet_scraper(api_url):
             if typ!='Wynik meczu':
                 continue
             else:
-                
+                datetime_list.append(match['eventStart'])
                 
                 data2=game['outcomes']
            

@@ -72,7 +72,3 @@ def api_betclick_scraper(api_url):
     master_df=adjust(master_df)
     return master_df
 
-# api_url='https://offer.cdn.begmedia.com/api/pub/v3/competitions/'+'5'+'?application=2048&countrycode=pl&forceCompetitionInfo=true&language=pa&markettypeId=1365&sitecode=plpa'
-    
-# print(api_betclick_scraper(api_url))
-                                        
