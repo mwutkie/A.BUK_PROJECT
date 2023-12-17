@@ -1,1 +1,1 @@
-Researchin polish betting market.
+Researching polish betting market.
