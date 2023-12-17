@@ -35,14 +35,13 @@ def api_betclick_scraper(api_url):
                 datetime=value
                 datetime_list.append(datetime)
             if key=='grouped_markets':
-
                 for key2,value2 in value[0].items():
                     if key2=='markets':
                         for i in value2:
                             
                             for key3,value3 in i.items():
+                                typ=i['name']
                                 if key3=='selections':
-                                    
                                     gospodarze=value3[0]
                                     remis=value3[1]
                                     goscie=value3[2]
@@ -65,14 +64,12 @@ def api_betclick_scraper(api_url):
                                     goscie_name_list.append(goscie_name)
                                     goscie_odds_list.append(goscie_odds)
 
-    print(goscie_name_list)
-    print(goscie_odds_list)
     master_df=pd.DataFrame({
         
     })
     
     return master_df
-for i in range(300):
+for i in range(5):
     try:
         print(i)
         str_i=str(i)

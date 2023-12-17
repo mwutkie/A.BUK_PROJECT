@@ -1,15 +1,17 @@
 
-api_url='https://fuksiarz.pl/rest/market/categories/multi/319/events'
+api_url='https://www.iforbet.pl/rest/market/categories/multi/29994/events?gamesClass=major'
 import requests
 import pandas as pd
+import json
+def totalbet_scraper(api_url):
 
 
-def fuksiarz_scraper(api_url):
-    response = requests.get(api_url)
+    response = requests.get(api_url,)
     if response.status_code == 200:
         response=response.json() 
     else:
         print(f"Error: {response.status_code}")
+
     data=response['data'] #each element of data list == match
     for match in data:
         competition=match['category3Name']
@@ -29,4 +31,8 @@ def fuksiarz_scraper(api_url):
             if result==data2[2]:
                 goscie_name=result['outcomeName']
                 goscie_odds=result['outcomeOdds']
-fuksiarz_scraper(api_url)
+                print(goscie_odds)
+    return response
+
+totalbet_scraper(api_url)
+

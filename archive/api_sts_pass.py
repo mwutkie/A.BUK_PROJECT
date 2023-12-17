@@ -22,6 +22,3 @@ def sts_scraper(api_url):
     print(response)
     return response
 
-z=sts_scraper(api_url)
-with open('sts.json', 'w') as file:
-    json.dump(z, file)
