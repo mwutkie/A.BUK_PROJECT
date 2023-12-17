@@ -1,9 +1,9 @@
-api_url='https://api.etoto.pl/rest/market/categories/multi/666/events'
+api_url='https://totalbet.pl/rest/market/categories/multi/7485/events'
 import requests
-from utils import *
 import pandas as pd
 import json
-def etoto_scraper(api_url):
+from utils import *
+def totalbet_scraper(api_url):
     datetime_list=[]
     gospodarze_name_list=[]
     gospodarze_odds_list=[]
@@ -27,12 +27,13 @@ def etoto_scraper(api_url):
         data2=match['eventGames']
         for game in data2:
             typ=game['gameName']
-            if typ!='1X2':
+            if typ!='Wynik meczu':
                 continue
             else:
                 
                 
                 data2=game['outcomes']
+           
                 for data3 in data2:
                     if data3==data2[0]:
                         gospodarze_name=data3['outcomeName']
@@ -51,8 +52,9 @@ def etoto_scraper(api_url):
                         goscie_odds_list.append(goscie_odds)
         
     typ='1X2'
+ 
     df=raw_to_df(gospodarze_name_list,gospodarze_odds_list,remis_name_list,remis_odds_list,goscie_name_list,goscie_odds_list,
               typ,datetime_list,competition
-              ,'etoto')
-
+              ,'totalbet')
     return df
+

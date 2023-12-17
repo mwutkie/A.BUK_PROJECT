@@ -2,8 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 # Replace 'your_url_here' with the URL of the website you want to scrape
-url = 'https://www.efortuna.pl/zaklady-bukmacherskie/pilka-nozna/1-anglia'
-def scraper_fortuna(url, name):
+url = 'https://www.efortuna.pl/zaklady-bukmacherskie/pilka-nozna/ekstraklasa-polska'
+
+def stanarisation_fortuna(input_df):
+    input_df=input_df.replace('ekstraklasa-polska','Ekstraklasa')
+    return input_df
+
+
+def scraper_fortuna(url):
     dict_start={
 
         'teamy':[],
@@ -63,13 +69,15 @@ def scraper_fortuna(url, name):
         master_df['typ_fortuna']='1X2'
         master_df['remis_name_fortuna']='Remis'
         del master_df['teamy']
+        master_df=stanarisation_fortuna(master_df)
         return master_df
 
 
         
 
-url = 'https://www.efortuna.pl/zaklady-bukmacherskie/pilka-nozna/1-anglia'
-print(scraper_fortuna(url, 'hehe'))
+
+
+
 
     
 

@@ -1,11 +1,13 @@
 import requests
 import pandas as pd
-
+from utils import *
 
 api_url='https://offer.cdn.begmedia.com/api/pub/v3/competitions/221?application=2048&countrycode=pl&forceCompetitionInfo=true&language=pa&markettypeId=1365&sitecode=plpa'
         #https://offer.cdn.begmedia.com/api/pub/v3/competitions/3?application=2048&countrycode=pl&forceCompetitionInfo=true&language=pa&markettypeId=1365&sitecode=plpa
 
-
+def adjust(input_df):
+    input_df=input_df.replace('Werder','Werder Brema')
+    return input_df
 
 
 
@@ -63,17 +65,14 @@ def api_betclick_scraper(api_url):
                                     remis_odds_list.append(remis_odds)
                                     goscie_name_list.append(goscie_name)
                                     goscie_odds_list.append(goscie_odds)
-
-    master_df=pd.DataFrame({
-        
-    })
-    
+    typ='1X2'
+    master_df=raw_to_df_betclick(gospodarze_name_list,gospodarze_odds_list,remis_name_list,remis_odds_list,goscie_name_list,goscie_odds_list,
+              typ,datetime_list,competition
+              ,'betclick')
+    master_df=adjust(master_df)
     return master_df
-for i in range(5):
-    try:
-        print(i)
-        str_i=str(i)
-        api_url='https://offer.cdn.begmedia.com/api/pub/v3/competitions/'+str_i+'?application=2048&countrycode=pl&forceCompetitionInfo=true&language=pa&markettypeId=1365&sitecode=plpa'
-        api_betclick_scraper(api_url)
-    except:
-        0                                                   
+
+# api_url='https://offer.cdn.begmedia.com/api/pub/v3/competitions/'+'5'+'?application=2048&countrycode=pl&forceCompetitionInfo=true&language=pa&markettypeId=1365&sitecode=plpa'
+    
+# print(api_betclick_scraper(api_url))
+                                        

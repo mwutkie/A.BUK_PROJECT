@@ -1,4 +1,5 @@
 api_url='https://api-v2.betfan.pl/api/v1/market/categories/294/events?date=&hours='
+from utils import *
 import requests
 import pandas as pd
 import json
@@ -22,7 +23,7 @@ def betfan_scraper(api_url):
     response=response[0]
     response=response['events']
     for part in response:
-        time=part['eventStart']
+        datetime_list.append(part['eventStart'])
         competition=part['categoryName']
         data=part['games']
         data=data[0]
@@ -44,8 +45,11 @@ def betfan_scraper(api_url):
                 goscie_odds=part2['outcomeOdds']    
                 goscie_name_list.append(goscie_name)
                 goscie_odds_list.append(goscie_odds)
-  
-    return response
+    typ='1X2'
+    df=raw_to_df(gospodarze_name_list,gospodarze_odds_list,remis_name_list,remis_odds_list,goscie_name_list,goscie_odds_list,
+              typ,datetime_list,competition
+              ,'betfan')
+    return df
 
-betfan_scraper(api_url)
+
 
